@@ -23,10 +23,6 @@ get_header();
 
 </section><!-- /banner -->
 
-
-
-
-
 		<div id="primary" class="content-area">
 
 			<section class="films" id="scroll-films">
