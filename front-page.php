@@ -5,13 +5,12 @@ get_header();
 $image= get_field("banner");
 $heading = get_field('banner');
 $title_one= get_field('banner');
-$film_title= get_field('film');
 
 ?>
 
 
 
-<section class="banner has--overlay" style="background-image:linear-gradient(black, black), url('<?php echo$image['image'];?>">
+<section class="banner has--overlay" style="background-image:linear-gradient(black, black), url('<?php echo$image['image'];?>")>
 <div class="container h-100">
 	<div class="row h-100 align-items-end">
 		<div class="col-12">
@@ -41,28 +40,51 @@ $film_title= get_field('film');
 							</div>
 						</div>
 					</div>
+
+					<?php
+
+					if (have_rows('films')) :
+						
+
+					while (have_rows('films')) : the_row();
+					
+						$heading = get_sub_field('heading');
+						$img = get_sub_field('bg_img');
+						$logo_img = get_sub_field('logo_img');
+
+						
+					?>
 					<div class="row last-none">
 						<div class="col-12">
 							<a href="film-details.html" class="films__card has--overlay">
 								<figure class="films__card-media">
-									<img src="<?php echo get_template_directory_uri();?>../images/empty.jpg" class="img-fluid" alt="">
+									<img src="<?php echo $img;?>" class="img-fluid" alt="">
 								</figure>
 								<div class="films__card-text text-center">
-									<h2 class="title text-uppercase"><?php echo $film_title?></h2>
+									<h2 class="title text-uppercase"><?php echo $heading;?></h2>
 
 									<div class="films__festival-logos">
 										<figure class="media">
-											<img src="<?php echo get_template_directory_uri();?>../images/empty-logp-1.png" class="img-fluid" alt="">
+											<img src="<?php echo $logo_img;?>" class="img-fluid" alt="">
+										</figure>
+										<?php
+
+								endwhile;
+								else :
+										echo "no field found";
+								endif;
+								?>
+																		
+
+										<!-- <figure class="media">
+											<img src="<?php //echo get_template_directory_uri();?>../images/empty-logp-2.png" class="img-fluid" alt="">
 										</figure>
 										<figure class="media">
-											<img src="<?php echo get_template_directory_uri();?>../images/empty-logp-2.png" class="img-fluid" alt="">
+											<img src="<?php //echo get_template_directory_uri();?>../images/empty-logp-3.png" class="img-fluid" alt="">
 										</figure>
 										<figure class="media">
-											<img src="<?php echo get_template_directory_uri();?>../images/empty-logp-3.png" class="img-fluid" alt="">
-										</figure>
-										<figure class="media">
-											<img src="<?php echo get_template_directory_uri();?>../images/empty-logp-4.png" class="img-fluid" alt="">
-										</figure>
+											<img src="<?php //echo get_template_directory_uri();?>../images/empty-logp-4.png" class="img-fluid" alt="">
+										</figure> -->
 									</div>
 								</div>
 							</a>
@@ -98,7 +120,7 @@ $film_title= get_field('film');
 					<div class="row">
 						<div class="col-12">
 							<div class="entry-title text-center">
-								<h2 class="title text-uppercase">Designs</h2>
+								<h2 class="title text-uppercase"><?php bloginfo('title');?></h2>
 							</div>
 						</div>
 					</div>
