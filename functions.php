@@ -43,7 +43,7 @@ wp_enqueue_script("min.js",get_theme_file_uri("js/scripts.js"),array("jquery"),n
 	 */
 
 	$labels = [
-		"name" => __( "films", "phylosophy" ),
+		"name" => __( "Films", "phylosophy" ),
 		"singular_name" => __( "film", "phylosophy" ),
 	];
 
