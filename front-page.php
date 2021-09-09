@@ -8,8 +8,6 @@ $title_one= get_field('banner');
 
 ?>
 
-
-
 <section class="banner has--overlay" style="background-image:linear-gradient(black, black), url('<?php echo$image['image'];?>")>
 <div class="container h-100">
 	<div class="row h-100 align-items-end">
@@ -43,77 +41,61 @@ $title_one= get_field('banner');
 
 					<?php
 
-					if (have_rows('films')) :
-						
-
-					while (have_rows('films')) : the_row();
-					
-						$heading = get_sub_field('heading');
-						$img = get_sub_field('bg_img');
-						$logo_img = get_sub_field('logo_img');
-
-						
-					?>
+					if( have_rows('films') ):
+						?>
 					<div class="row last-none">
+
+
+							<?php
+											
+								while( have_rows('films') ) : the_row();
+
+							$featured_posts = get_sub_field('film_post');
+							$image_gallery = get_sub_field('image_gallery');
+						
+
+							if( $featured_posts ): ?>
+							
+						<?php foreach( $featured_posts as $featured_post ): 
+							$title = get_the_title( $featured_post->ID );
+							$image = get_the_post_thumbnail( $featured_post->ID );
+							//$content = get_the_content( $featured_post->ID );
+							?>
 						<div class="col-12">
 							<a href="film-details.html" class="films__card has--overlay">
 								<figure class="films__card-media">
-									<img src="<?php echo $img;?>" class="img-fluid" alt="">
+									<img src="<?php echo $image;?>" class="img-fluid" alt="">
 								</figure>
 								<div class="films__card-text text-center">
-									<h2 class="title text-uppercase"><?php echo $heading;?></h2>
+									<h2 class="title text-uppercase"><?php echo $title;?></h2>
 
 									<div class="films__festival-logos">
+										<?php foreach($image_gallery as $logo_img):?>
 										<figure class="media">
 											<img src="<?php echo $logo_img;?>" class="img-fluid" alt="">
 										</figure>
-										<?php
-
-								endwhile;
-								else :
-										echo "no field found";
-								endif;
-								?>
+										<?php endforeach;?>
 																		
-
-										<!-- <figure class="media">
-											<img src="<?php //echo get_template_directory_uri();?>../images/empty-logp-2.png" class="img-fluid" alt="">
-										</figure>
-										<figure class="media">
-											<img src="<?php //echo get_template_directory_uri();?>../images/empty-logp-3.png" class="img-fluid" alt="">
-										</figure>
-										<figure class="media">
-											<img src="<?php //echo get_template_directory_uri();?>../images/empty-logp-4.png" class="img-fluid" alt="">
-										</figure> -->
 									</div>
 								</div>
 							</a>
 						</div><!-- /films__card -->
 
-						<div class="col-12">
-							<a href="#" class="films__card has--overlay">
-								<figure class="films__card-media">
-									<img src="<?php echo get_template_directory_uri();?>../images/elora.jpg" class="img-fluid" alt="">
-								</figure>
-								<div class="films__card-text text-center">
-									<h2 class="title text-uppercase">Elora</h2>
-								</div>
-							</a>
-						</div><!-- /films__card -->
+											
+							<?php endforeach;?>
+							
+							<?php endif; 
 
-						<div class="col-12">
-							<a href="#" class="films__card has--overlay">
-								<figure class="films__card-media">
-									<img src="<?php echo get_template_directory_uri();?>../images/films-1.jpg" class="img-fluid" alt="">
-								</figure>
-								<div class="films__card-text text-center">
-									<h2 class="title text-uppercase">The Pizza City You’ve Never Heard Of</h2>
-								</div>
-							</a>
-						</div><!-- /films__card -->
+							endwhile;
+
+						else :
+							echo "no filed found";					
+						?>
 					</div>
+				<?php endif;?>
 				</div>
 			</section><!-- /films -->
+			
 
 			<section class="designs" id="scroll-designs">
 				<div class="container">
