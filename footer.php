@@ -1,10 +1,12 @@
+<?php $footer= get_field('footer','option');?>
+
 <footer class="footer text-center">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
 						<div class="footer__entry-title text-uppercase">
-							<span>Tristan Laughton</span>
-							<span>Director & Filmmaker</span>
+							<span><?php echo $footer['title'];?></span>
+							<span><?php echo $footer['title_two'];?></span>
 						</div>
 						<div class="footer__widget">
 							<ul class="footer__widget-nav text-uppercase">
