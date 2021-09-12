@@ -77,6 +77,21 @@ wp_enqueue_script("min.js",get_theme_file_uri("js/scripts.js"),array("jquery"),n
 add_action( 'init', 'cptui_register_my_cpts_films' );
 
 
+
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'option',
+		'menu_title'	=> 'option',
+		'menu_slug' 	=> 'option',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false,
+        'position' => 2
+	));
+	
+}
+
+
 ?>
 
 
