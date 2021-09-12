@@ -3,7 +3,10 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<?php wp_head();?>
+		<?php 
+		wp_head();
+		$header= get_field('header','option');
+		?>
 
 	</head>
 	<body <?php body_class();?>>
@@ -38,7 +41,7 @@
 				<div class="container">
 					<div class="navbar-header">
 						<a class="navbar-brand" href="index.html">
-							<img src="<?php echo get_template_directory_uri();?>../images/white-logo.png" class="transparent-logo" alt="logo">
+							<img src="<?php echo $header['logo'];?>" class="transparent-logo" alt="logo">
 						</a>
 					</div>
 
