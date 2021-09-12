@@ -164,15 +164,20 @@ $title_one= get_field('banner');
 					<div class="row">
 						<div class="col-12">
 							<div class="hm-about-us__content text-center">
-								<h2 class="title text-uppercase">About Tristan</h2>
+								<?php 
+								$about=get_field('about_us');
+								$name= get_field('name');
+								var_dump($name);
+								?>							
+								<h2 class="title text-uppercase"><?php echo $about['title'];?></h2>
 
 								<div class="des">
-									<p>Sharine’s combined passions for writing, archiving, media creating and curating has made her a credible source for pop culture commentary and criticism, and a trusted voice for the latest in Jamaican music and culture.</p>
-									<p>The music and culture documentarian is a JUNO Award judge, verified tastemaker on discovery streaming hub Audiomack and currently holds a seat as a juror for the Polaris Music Prize,  Prism Prize, SOCAN Songwriting Prize and FACTOR.</p>
+									<p><?php echo $about['content'];?></p>
+									<p><?php echo $about['second_content'];?></p>
 								</div>
 
 								<div class="social-conetct">
-									<div class="label-title">Connect with me below:</div>
+									<div class="label-title"><?php echo $about['contact_title'];?></div>
 
 									<ul class="social-media list-inline">
 										<li><a href="#" class="icon-twitter" target="_blank"></a></li>
@@ -184,7 +189,7 @@ $title_one= get_field('banner');
 								</div>
 
 								<div class="btn-box">
-									<a href="#" class="btn">Contact Me <i class="icon-email"></i></a>
+									<a href="#" class="btn"><?php echo $about['button_title'];?> <i class="icon-email"></i></a>
 								</div>
 							</div>
 						</div>
