@@ -58,7 +58,7 @@ $title_one= get_field('banner');
 							
 						<?php foreach( $featured_posts as $featured_post ): 
 							$title = get_the_title( $featured_post->ID );
-							$image = get_the_post_thumbnail( $featured_post->ID );
+							$image = get_the_post_thumbnail_url( $featured_post->ID );
 							//$content = get_the_content( $featured_post->ID );
 							?>
 						<div class="col-12">
@@ -164,11 +164,9 @@ $title_one= get_field('banner');
 					<div class="row">
 						<div class="col-12">
 							<div class="hm-about-us__content text-center">
-								<?php 
-								$about=get_field('about_us');
-								$name= get_field('name');
-								var_dump($name);
-								?>							
+
+								<?php $about=get_field('about_us');?>
+																
 								<h2 class="title text-uppercase"><?php echo $about['title'];?></h2>
 
 								<div class="des">
@@ -179,17 +177,33 @@ $title_one= get_field('banner');
 								<div class="social-conetct">
 									<div class="label-title"><?php echo $about['contact_title'];?></div>
 
+									
 									<ul class="social-media list-inline">
-										<li><a href="#" class="icon-twitter" target="_blank"></a></li>
-										<li><a href="#" class="icon-vimeo" target="_blank"></a></li>
-										<li><a href="#" class="icon-instagram" target="_blank"></a></li>
-										<li><a href="#" class="icon-youtube" target="_blank"></a></li>
-										<li><a href="#" class="icon-behance" target="_blank"></a></li>
+
+									<?php
+
+									$social = get_field('social_media','option');
+									//var_dump($social);
+
+											foreach($social as $nsocial){
+												$name= $nsocial['select'];
+												//  var_dump($name);
+												
+												// var_dump ($nsocial[$name]);
+											
+											?>
+											
+										<li><a href="<?php echo $nsocial[$name];?>" class="icon-<?php echo $name;?>" target="_blank"></a></li>
+						
+										<?php
+											}
+											?>
 									</ul>
+												
 								</div>
 
 								<div class="btn-box">
-									<a href="#" class="btn"><?php echo $about['button_title'];?> <i class="icon-email"></i></a>
+									<a href="<?php echo $about['Link']?>" class="btn"><?php echo $about['name']; ?><i class="icon-email"></i></a>
 								</div>
 							</div>
 						</div>
@@ -203,15 +217,15 @@ $title_one= get_field('banner');
 				<div class="row">
 					<div class="col-12">
 						<figure class="media justify-content-center">
-							<img src="<?php echo get_template_directory_uri();?>../images/about.png" class="img-fluid" alt="">
+							<img src="<?php the_field('footer_top');?>" class="img-fluid" alt="">
 						</figure>
 					</div>
 				</div>
 			</div>
 		</section><!-- /footer-top -->
 
-<?php
+<?php get_footer();?>
 
-get_footer();
-?>
+
+
 
