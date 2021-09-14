@@ -77,7 +77,7 @@ wp_enqueue_script("min.js",get_theme_file_uri("js/scripts.js"),array("jquery"),n
 add_action( 'init', 'cptui_register_my_cpts_films' );
 
 
-
+// for option page 
 if( function_exists('acf_add_options_page') ) {
 	
 	acf_add_options_page(array(
@@ -90,6 +90,28 @@ if( function_exists('acf_add_options_page') ) {
 	));
 	
 }
+
+
+
+function fotter_widgets() {
+    register_sidebar( array(
+        'name'          => __( 'footer Sidebar', 'tristan-laughton' ),
+        'id'            => 'sidebar-1',
+		'description'   => __('footer sidebar',"tristan-laughton"),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</aside>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+
+	}
+	add_action ("widgets_init", "fotter_widgets");
+
+	function add_class($classes, $item){
+		$classes[]="list-inline-item";
+		return $classes;
+	}
+	add_filter("nav_menu_css_class","add_class", 10, 2);
 
 
 ?>
