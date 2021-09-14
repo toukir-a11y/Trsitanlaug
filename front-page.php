@@ -80,8 +80,7 @@ $title_one= get_field('banner');
 								</div>
 							</a>
 						</div><!-- /films__card -->
-
-											
+						
 							<?php endforeach;?>
 							
 							<?php endif; 
@@ -102,59 +101,40 @@ $title_one= get_field('banner');
 					<div class="row">
 						<div class="col-12">
 							<div class="entry-title text-center">
-								<h2 class="title text-uppercase"><?php bloginfo('title');?></h2>
+								<h2 class="title text-uppercase"><?php the_field('design_title');?></h2>
 							</div>
 						</div>
 					</div>
-
+							
 					<div class="row popup-gallery last-none">
+
+					<?php
+							
+							if( have_rows('desing_image') ):
+								
+								while( have_rows('desing_image') ) : the_row();
+																
+									$image = get_sub_field('popup_image');
+									//$pimg = get_sub_field('image');
+																	
+							?>
 						<div class="col-lg-4 col-md-6 col-sm-6">
-							<a href="<?php echo get_template_directory_uri();?>../images/designs-1.jpg" class="popup-gallery-item">
+							<a href="<?php echo $image ?>" class="popup-gallery-item">
 								<figure class="media">
-									<img src="<?php echo get_template_directory_uri();?>../images/designs-1.jpg" alt="" class="img-fluid">
+									<img src="<?php echo $image;?>" alt="" class="img-fluid">
 								</figure>
 							</a>
+
+							
 						</div><!-- /gallery-popup-item -->
 
-						<div class="col-lg-4 col-md-6 col-sm-6">
-							<a href="<?php echo get_template_directory_uri();?>../images/designs-2.jpg" class="popup-gallery-item">
-								<figure class="media">
-									<img src="<?php echo get_template_directory_uri();?>../images/designs-2.jpg" alt="" class="img-fluid">
-								</figure>
-							</a>
-						</div><!-- /gallery-popup-item -->
-
-						<div class="col-lg-4 col-md-6 col-sm-6">
-							<a href="<?php echo get_template_directory_uri();?>../images/designs-3.jpg" class="popup-gallery-item">
-								<figure class="media">
-									<img src="<?php echo get_template_directory_uri();?>../images/designs-3.jpg" alt="" class="img-fluid">
-								</figure>
-							</a>
-						</div><!-- /gallery-popup-item -->
-
-						<div class="col-lg-4 col-md-6 col-sm-6">
-							<a href="<?php echo get_template_directory_uri();?>../images/designs-4.jpg" class="popup-gallery-item">
-								<figure class="media">
-									<img src="<?php echo get_template_directory_uri();?>../images/designs-4.jpg" alt="" class="img-fluid">
-								</figure>
-							</a>
-						</div><!-- /gallery-popup-item -->
-
-						<div class="col-lg-4 col-md-6 col-sm-6">
-							<a href="<?php echo get_template_directory_uri();?>../images/designs-5.jpg" class="popup-gallery-item">
-								<figure class="media">
-									<img src="<?php echo get_template_directory_uri();?>../images/designs-5.jpg" alt="" class="img-fluid">
-								</figure>
-							</a>
-						</div><!-- /gallery-popup-item -->
-
-						<div class="col-lg-4 col-md-6 col-sm-6">
-							<a href="<?php echo get_template_directory_uri();?>../images/designs-6.jpg" class="popup-gallery-item">
-								<figure class="media">
-									<img src="<?php echo get_template_directory_uri();?>../images/designs-6.jpg" alt="" class="img-fluid">
-								</figure>
-							</a>
-						</div><!-- /gallery-popup-item -->
+						<?php
+							endwhile;
+														
+							else :
+								echo "no field found";
+							endif;
+							?>						
 					</div>
 				</div>
 			</section><!-- /designs -->
