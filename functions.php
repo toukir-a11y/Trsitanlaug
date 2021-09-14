@@ -1,6 +1,8 @@
 <?php
 require_once 'wp_bootstrap_navwalker.php';
 
+// nessesary bootstrapping 
+
 function tristan_laughton_theme_support() {
 
     load_default_textdomain("tristan-laughton");
@@ -9,7 +11,8 @@ function tristan_laughton_theme_support() {
     register_nav_menus(
          array(
         
-        'menu' => esc_html(__('Primary Menu', 'tristanlaug')),   
+        'menu' => esc_html(__('Primary Menu', 'tristanlaug')), 
+		'footer_menu'=>  esc_html(__('Primary Menu', 'tristanlaug')), 
     ),
     );       
 
@@ -36,15 +39,14 @@ wp_enqueue_script("min.js",get_theme_file_uri("js/scripts.js"),array("jquery"),n
 
  // for custom post
 
- function cptui_register_my_cpts_films() {
+ function film_custom_post() {
 
-	/**
-	 * Post Type: films.
-	 */
+// Post Type: films.
+	 
 
 	$labels = [
-		"name" => __( "Films", "phylosophy" ),
-		"singular_name" => __( "film", "phylosophy" ),
+		"name" => __( "Films", "tristan-laughton" ),
+		"singular_name" => __( "film", "tristan-laughton" ),
 	];
 
 	$args = [
@@ -74,10 +76,11 @@ wp_enqueue_script("min.js",get_theme_file_uri("js/scripts.js"),array("jquery"),n
 	register_post_type( "films", $args );
 }
 
-add_action( 'init', 'cptui_register_my_cpts_films' );
+add_action( 'init', 'film_custom_post' );
 
 
-// for option page 
+// add option page 
+
 if( function_exists('acf_add_options_page') ) {
 	
 	acf_add_options_page(array(
@@ -91,7 +94,7 @@ if( function_exists('acf_add_options_page') ) {
 	
 }
 
-
+// register widgets 
 
 function fotter_widgets() {
     register_sidebar( array(
@@ -106,13 +109,6 @@ function fotter_widgets() {
 
 	}
 	add_action ("widgets_init", "fotter_widgets");
-
-	function add_class($classes, $item){
-		$classes[]="list-inline-item";
-		return $classes;
-	}
-	add_filter("nav_menu_css_class","add_class", 10, 2);
-
 
 ?>
 
