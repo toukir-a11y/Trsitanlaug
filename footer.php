@@ -10,17 +10,14 @@
 						</div>
 						<div class="footer__widget">
 					
-							<ul class="footer__widget-nav text-uppercase">
-
 							<?php
-							if(is_active_sidebar("sidebar-1")){
-								dynamic_sidebar("sidebar-1");
-							}
+								wp_nav_menu(array(
+									'theme_location'  =>'footer_menu',
+									'menu_id'         =>'footer_menu',
+									'menu_class'      => 'footer__widget-nav text-uppercase',
+
+								));
 							?>
-								<!-- <li><a href="#">Portfolio</a></li>
-								<li><a href="#">Contact Me</a></li>
-								<li><a href="#">About Tris</a></li> -->
-							</ul>
 						</div>
 					</div><!-- /footer__widget -->
 				</div>
@@ -28,3 +25,4 @@
 		<?php wp_footer();?>
 	</body>
 </html>
+
