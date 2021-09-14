@@ -9,10 +9,17 @@
 							<span><?php echo $footer['title_two'];?></span>
 						</div>
 						<div class="footer__widget">
+					
 							<ul class="footer__widget-nav text-uppercase">
-								<li><a href="#">Portfolio</a></li>
+
+							<?php
+							if(is_active_sidebar("sidebar-1")){
+								dynamic_sidebar("sidebar-1");
+							}
+							?>
+								<!-- <li><a href="#">Portfolio</a></li>
 								<li><a href="#">Contact Me</a></li>
-								<li><a href="#">About Tris</a></li>
+								<li><a href="#">About Tris</a></li> -->
 							</ul>
 						</div>
 					</div><!-- /footer__widget -->
