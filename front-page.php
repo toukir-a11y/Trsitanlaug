@@ -2,23 +2,20 @@
 <?php
 get_header();
 
-$image= get_field("banner");
-$heading = get_field('banner');
-$title_one= get_field('banner');
-
+$banner= get_field("banner");
 ?>
 
-<section class="banner has--overlay" style="background-image:linear-gradient(black, black), url('<?php echo$image['image'];?>")>
+<section class="banner has--overlay" style="background-image:linear-gradient(black, black), url('<?php echo$banner['image'];?>")>
 <div class="container h-100">
 	<div class="row h-100 align-items-end">
 		<div class="col-12">
 			<div class="banner__content text-center">
-				<h1 class="title fs text-uppercase"><?php echo $heading['heading'];?></h1>
+				<h1 class="title fs text-uppercase"><?php echo $banner['heading'];?></h1>
 				<ul class="list-unstyled list-inline text-uppercase">
-					<li><?php echo $title_one['title'];?></li>	
-				</ul>
-
-				 
+					<li><?php echo $banner['title'];?></li>
+					<li><?php echo $banner['title_two'];?></li>	
+					<li><?php echo $banner['title_three'];?></li>		
+				</ul>				 
 			</div>
 		</div>
 	</div>
