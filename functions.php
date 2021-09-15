@@ -28,9 +28,9 @@ wp_enqueue_style ("preconnect","//fonts.gstatic.com");
 wp_enqueue_style ("fonts","//fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
 wp_enqueue_style("tristanlaug",get_stylesheet_uri());
    
-wp_enqueue_script("min.js",get_theme_file_uri("js/jquery.min.js"),array("jquery"),null,true);
-wp_enqueue_script("min.js",get_theme_file_uri("js/plugins.js"),array("jquery"),null,true);
-wp_enqueue_script("min.js",get_theme_file_uri("js/scripts.js"),array("jquery"),null,true);
+wp_enqueue_script("min.js",get_theme_file_uri("js/jquery.min.js"),array("jquery"),"0.0.1",true);
+wp_enqueue_script("plugin.js",get_theme_file_uri("js/plugins.js"),array("jquery"),"0.0.1",true);
+wp_enqueue_script("scripts.js",get_theme_file_uri("js/scripts.js"),array("jquery"),"0.0.1",true);
 
 }
  add_action ("wp_enqueue_scripts","tristan_assets");
