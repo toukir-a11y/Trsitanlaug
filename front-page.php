@@ -59,7 +59,7 @@ $banner= get_field("banner");
 							//$content = get_the_content( $featured_post->ID );
 							?>
 						<div class="col-12">
-							<a href="film-details.html" class="films__card has--overlay">
+							<a href="<?php the_permalink($featured_post->ID);?>" class="films__card has--overlay">
 								<figure class="films__card-media">
 									<img src="<?php echo $image;?>" class="img-fluid" alt="">
 								</figure>
