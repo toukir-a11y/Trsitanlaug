@@ -9,7 +9,9 @@ $credits= get_field('credits');
 $partner= get_field('partner_logo');
 $gallery=get_field('photo_gallery');
 $award= get_field('award_link');
-?>
+$single_img= get_field('festival_logo');
+?>		
+	<?php if ($banner):?>
 		<section class="page-banner has--overlay" style="background-image:url('<?php echo $banner['background_image'];?>');">
 			<div class="container">
 				<div class="row">
@@ -21,16 +23,19 @@ $award= get_field('award_link');
 				</div>
 			</div>
 		</section><!-- /banner -->
+		<?php endif;?>
 
-		<div id="primary" class="content-area">
+		<div id="primary" class="content-area" >
 			<section class="festival-logos">
 				<div class="container">
 					<div class="row last-none justify-content-center">
+						<?php if($single_img):?>
 						<div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center align-items-center">
 							<a  class="festival-logos__item">
-								<img src="<?php the_field('festival_logo');?>" class="img-fluid" alt="">
+								<img src="<?php echo $single_img;?>" class="img-fluid" alt="">
 							</a>
 						</div><!-- /festival-logos__item -->
+						<?php endif;?>
 
 						<?php
 							
@@ -54,8 +59,8 @@ $award= get_field('award_link');
 						<?php
 							endwhile;
 														
-							else :
-								echo "no field found";
+							// else :
+							// 	echo "no field found";
 							endif;
 							?>
 
