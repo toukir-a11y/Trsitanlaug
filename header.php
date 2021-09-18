@@ -40,7 +40,7 @@
 			<nav class="navbar navbar-expand">
 				<div class="container">
 					<div class="navbar-header">
-						<a class="navbar-brand" href="index.html">
+						<a class="navbar-brand" href="<?php echo get_home_url();?>">
 							<img src="<?php echo $header['logo'];?>" class="transparent-logo" alt="logo">
 						</a>
 					</div>
