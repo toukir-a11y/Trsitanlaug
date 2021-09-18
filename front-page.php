@@ -1,16 +1,15 @@
 
 <?php
 get_header();
-
 $banner= get_field("banner");
 ?>
-
-<section class="banner has--overlay" style="background-image:linear-gradient(black, black), url('<?php echo$banner['image'];?>")>
+<?php if($banner):?>
+<section class="banner has--overlay" style=" display:<?php echo $banner['condition'];?>;background-image:linear-gradient(black, black), url('<?php echo$banner['image'];?>")>
 <div class="container h-100">
 	<div class="row h-100 align-items-end">
 		<div class="col-12">
 			<div class="banner__content text-center">
-				<h1 class="title fs text-uppercase"><?php echo $banner['heading'];?></h1>
+				<h1 class="title fs text-uppercase"><?php echo $banner['heading'];?></h1>				
 				<ul class="list-unstyled list-inline text-uppercase">
 					<li><?php echo $banner['title'];?></li>
 					<li><?php echo $banner['title_two'];?></li>	
@@ -20,12 +19,11 @@ $banner= get_field("banner");
 		</div>
 	</div>
 </div>
-
-
 </section><!-- /banner -->
+<?php endif;?>
+
 
 		<div id="primary" class="content-area">
-
 			<section class="films" id="scroll-films">
 				<div class="container">
 					<div class="row">
@@ -63,9 +61,9 @@ $banner= get_field("banner");
 								<figure class="films__card-media">
 									<img src="<?php echo $image;?>" class="img-fluid" alt="">
 								</figure>
-								<div class="films__card-text text-center">
+								
+								<div class="films__card-text text-center">							
 									<h2 class="title text-uppercase"><?php echo $title;?></h2>
-
 									<div class="films__festival-logos">
 										<?php foreach($image_gallery as $logo_img):?>
 										<figure class="media">
@@ -91,7 +89,7 @@ $banner= get_field("banner");
 				<?php endif;?>
 				</div>
 			</section><!-- /films -->
-			
+		
 
 			<section class="designs" id="scroll-designs">
 				<div class="container">
